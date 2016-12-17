@@ -12,7 +12,7 @@ Quickstart
 
 	`docker pull redis`
 
-2. Get Tyk Gateway
+2. Get Tyk Pump
 
 	`docker pull tykio/tyk-pump`
     
