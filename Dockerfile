@@ -10,7 +10,7 @@ RUN echo "deb https://packagecloud.io/tyk/tyk-pump/ubuntu/ trusty main" | sudo t
 RUN echo "deb-src https://packagecloud.io/tyk/tyk-pump/ubuntu/ trusty main" | sudo tee -a /etc/apt/sources.list.d/tyk_tyk-pump.list
 
 RUN sudo apt-get update
-RUN sudo apt-get install -y tyk-pump=0.4.1.1
+RUN sudo apt-get install -y tyk-pump=0.4.2
 
 COPY ./pump.mongo.conf /opt/tyk-pump/pump.conf
 VOLUME ["/opt/tyk-pump/"]
