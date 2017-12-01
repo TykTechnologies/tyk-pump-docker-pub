@@ -14,7 +14,7 @@ Quickstart
 
 2. Get Tyk Pump
 
-	`docker pull tykio/tyk-pump`
+	`docker pull tykio/tyk-pump-docker-pub`
     
 3. Run redis:
 	
@@ -24,7 +24,7 @@ Quickstart
 
 5. Run Tyk Pump:
 
-	`docker run -d --name tyk_pump --link tyk_redis:redis --link tyk_mongo:mongo tykio/tyk-pump`
+	`docker run -d --name tyk_pump --link tyk_redis:redis --link tyk_mongo:mongo tykio/tyk-pump-docker-pub`
 
 
 

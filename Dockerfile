@@ -1,16 +1,21 @@
-FROM ubuntu:14.04
-RUN apt-get update
-RUN apt-get install -y wget curl ca-certificates apt-transport-https curl
-RUN curl https://packagecloud.io/gpg.key | sudo apt-key add -
-RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-RUN sudo apt-get update
+FROM debian:jessie-slim
 
-RUN echo "deb https://packagecloud.io/tyk/tyk-pump/ubuntu/ trusty main" | sudo tee /etc/apt/sources.list.d/tyk_tyk-pump.list
+ENV TYKVERSION 0.4.2
 
-RUN echo "deb-src https://packagecloud.io/tyk/tyk-pump/ubuntu/ trusty main" | sudo tee -a /etc/apt/sources.list.d/tyk_tyk-pump.list
+LABEL Description="Tyk Pump docker image" Vendor="Tyk" Version=$TYKVERSION
 
-RUN sudo apt-get update
-RUN sudo apt-get install -y tyk-pump
+RUN apt-get update \
+ && apt-get upgrade -y \
+ && apt-get install -y --no-install-recommends \
+            curl ca-certificates apt-transport-https \
+ && curl https://packagecloud.io/gpg.key | apt-key add - \
+ && apt-get autoremove -y \
+ && rm -rf /root/.cache
+
+RUN echo "deb https://packagecloud.io/tyk/tyk-pump/debian/ jessie main" | tee /etc/apt/sources.list.d/tyk_tyk-pump.list \
+ && apt-get update \
+ && apt-get install -y tyk-pump=$TYKVERSION \
+ && rm -rf /var/lib/apt/lists/*
 
 COPY ./pump.mongo.conf /opt/tyk-pump/pump.conf
 VOLUME ["/opt/tyk-pump/"]
