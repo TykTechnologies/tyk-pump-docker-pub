@@ -1,6 +1,6 @@
 FROM debian:jessie-slim
 
-ENV TYKVERSION 0.5.0
+ENV TYKVERSION 0.5.1
 
 LABEL Description="Tyk Pump docker image" Vendor="Tyk" Version=$TYKVERSION
 
@@ -8,7 +8,7 @@ RUN apt-get update \
  && apt-get upgrade -y \
  && apt-get install -y --no-install-recommends \
             curl ca-certificates apt-transport-https \
- && curl https://packagecloud.io/gpg.key | apt-key add - \
+ && curl -L https://packagecloud.io/tyk/tyk-pump/gpgkey | apt-key add - \
  && apt-get autoremove -y \
  && rm -rf /root/.cache
 
@@ -22,4 +22,4 @@ VOLUME ["/opt/tyk-pump/"]
 
 WORKDIR /opt/tyk-pump
 
-CMD ["/opt/tyk-pump/tyk-pump", "--c=/opt/tyk-pump/pump.conf"]
+CMD ["/opt/tyk-pump/tyk-pump", "-c", "/opt/tyk-pump/pump.conf"]
