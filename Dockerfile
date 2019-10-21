@@ -1,6 +1,6 @@
 FROM debian:jessie-slim
 
-ENV TYKVERSION 0.8.0
+ENV TYKVERSION 0.8.1
 
 LABEL Description="Tyk Pump docker image" Vendor="Tyk" Version=$TYKVERSION
 
