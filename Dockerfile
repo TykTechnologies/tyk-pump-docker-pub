@@ -1,4 +1,4 @@
-FROM debian:jessie-slim
+FROM debian:buster-slim
 
 ENV TYKVERSION 0.8.1
 
@@ -7,7 +7,7 @@ LABEL Description="Tyk Pump docker image" Vendor="Tyk" Version=$TYKVERSION
 RUN apt-get update \
  && apt-get upgrade -y \
  && apt-get install -y --no-install-recommends \
-            curl ca-certificates apt-transport-https \
+            curl ca-certificates apt-transport-https gnupg \
  && curl -L https://packagecloud.io/tyk/tyk-pump/gpgkey | apt-key add - \
  && apt-get autoremove -y \
  && rm -rf /root/.cache
