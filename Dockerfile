@@ -9,6 +9,7 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends \
             curl ca-certificates apt-transport-https gnupg \
  && curl -L https://packagecloud.io/tyk/tyk-pump/gpgkey | apt-key add - \
+ && apt-get purge -y gnupg \
  && apt-get autoremove -y \
  && rm -rf /root/.cache
 
