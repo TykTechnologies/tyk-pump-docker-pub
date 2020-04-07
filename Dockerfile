@@ -1,6 +1,6 @@
 FROM debian:buster-slim
 
-ENV TYKVERSION 0.8.4
+ENV TYKVERSION 0.8.5
 
 LABEL Description="Tyk Pump docker image" Vendor="Tyk" Version=$TYKVERSION
 
