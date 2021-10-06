@@ -1,4 +1,6 @@
-Official Tyk Pump Docker Build
+We would like to deprecate this repo. If you have a use case that depends on this repo, please log an issue and I'm sure we canb work something out.
+
+~~Official~~ Tyk Pump Docker Build
 ==============================
 
 This container only contains the Tyk Pump, an application that facilitates moving data between Tyk and Tyk Dashboard
